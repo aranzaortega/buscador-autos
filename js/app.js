@@ -123,7 +123,22 @@ function filtrarAuto(){
         .filter(filtrarPuertas)
         .filter(filtrarColor)
         .filter(filtrarTransmision);
-    mostrarAutos(resultado);
+
+    if (resultado.length){
+        mostrarAutos(resultado);
+    } else {
+        noResultado();
+    }
+}
+
+function noResultado(){
+    limpiarResultadoHTML();
+
+    const noResultado = document.createElement('div');
+    noResultado.classList.add('alerta', 'error');
+    noResultado.textContent = 'No hay resultado, intenta con otras opciones';
+
+    resultado.appendChild(noResultado);
 }
 
 function filtrarMarca(auto){
